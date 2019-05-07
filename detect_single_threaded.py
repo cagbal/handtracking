@@ -19,6 +19,13 @@ if __name__ == '__main__':
         default=0.2,
         help='Score threshold for displaying bounding boxes')
     parser.add_argument(
+        '-fps',
+        '--fps',
+        dest='fps',
+        type=int,
+        default=1,
+        help='Show FPS on detection/display visualization')
+    parser.add_argument(
         '-src',
         '--source',
         dest='video_source',
@@ -38,6 +45,13 @@ if __name__ == '__main__':
         type=int,
         default=180,
         help='Height of the frames in the video stream.')
+    parser.add_argument(
+        '-ds',
+        '--display',
+        dest='display',
+        type=int,
+        default=1,
+        help='Display the detected images using OpenCV. This reduces FPS')
     parser.add_argument(
         '-num-w',
         '--num-workers',
@@ -86,12 +100,15 @@ if __name__ == '__main__':
         detector_utils.draw_box_on_image(num_hands_detect, args.score_thresh,
                                          scores, boxes, im_width, im_height,
                                          image_np)
-        # draw FPS on the frame
-        detector_utils.draw_fps_on_image("FPS : " + str(int(fps)),
-                                                 image_np)
 
         # Calculate Frames per second (FPS)
         num_frames += 1
         elapsed_time = (datetime.datetime.now() - start_time).total_seconds()
         fps = num_frames / elapsed_time
-            
+
+        # draw FPS on the frame
+        detector_utils.draw_fps_on_image("FPS : " + str(int(fps)),
+                                                 image_np)
+
+   
+
