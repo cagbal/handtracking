@@ -1,10 +1,10 @@
-from utils import detector_utils as detector_utils
+from handtracking.utils import detector_utils as detector_utils
 import cv2
 import tensorflow as tf
 import multiprocessing
 from multiprocessing import Queue, Pool
 import time
-from utils.detector_utils import WebcamVideoStream
+from handtracking.utils.detector_utils import WebcamVideoStream
 import datetime
 import argparse
 

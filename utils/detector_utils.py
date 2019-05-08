@@ -7,7 +7,7 @@ import os
 from threading import Thread
 from datetime import datetime
 import cv2
-from utils import label_map_util
+from handtracking.utils import label_map_util
 from collections import defaultdict
 
 
